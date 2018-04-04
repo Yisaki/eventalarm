@@ -1,5 +1,7 @@
 package com.chaos.config.web;
 
+import com.chaos.util.CommonUtil;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ public class LoginFilter implements Filter{
         String userName=(String)session.getAttribute("login");
         if(userName==null){
             HttpServletResponse response=(HttpServletResponse)servletResponse;
-            response.sendRedirect("/?msg=请登陆");
+            response.sendRedirect("/?msg="+ CommonUtil.urlEncodeWithUtf8("请登陆"));
         }else{
             filterChain.doFilter(servletRequest,servletResponse);
         }

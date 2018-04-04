@@ -1,5 +1,6 @@
 package com.chaos.controller;
 
+import com.chaos.util.CommonUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class LoginController {
             session.setAttribute("login",userName);
             return "redirect:/event/list.htm";
         }else{
-            return "redirect:/?msg=密码错误";
+            return "redirect:/?msg="+ CommonUtil.urlEncodeWithUtf8("密码错误");
         }
 
     }
