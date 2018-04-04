@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chaos.mapper.IAlarmTaskMapper">
+
+    <resultMap id="task2po" type="com.chaos.po.AlarmTask">
+        <id column="id" property="id"></id>
+        <result column="alarm_time" property="alarmTime"></result>
+        <result column="alarm_fix" property="alarmFix"></result>
+        <result column="alarm_desc" property="alarmDesc"></result>
+        <result column="alarm_count" property="alarmCount"></result>
+        <result column="status" property="status"></result>
+        <result column="create_time" property="createTime"></result>
+        <association property="alarmTarget" resultMap="com.chaos.mapper.IAlarmTargetMapper.target2po"/>
+    </resultMap>
+
+
+    <select id="listAll" resultMap="task2po">
+        select task.*,
+        <include refid="com.chaos.mapper.IAlarmTargetMapper.column"/>
+        from t_alarm_task task inner join t_alarm_target target on task.f_alarm_target_id=target.id
+    </select>
+
+    <insert id="add" parameterType="com.chaos.po.AlarmTask">
+        INSERT INTO t_alarm_task(alarm_time,alarm_fix,f_alarm_target_id,alarm_desc) VALUES (#{alarmTime},#{alarmFix},#{alarmTarget.id},#{alarmDesc})
+    </insert>
+</mapper>

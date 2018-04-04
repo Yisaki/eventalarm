@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chaos.mapper.IAlarmTargetMapper">
+
+    <sql id="column">
+         target.id j_id,target.target j_target,target.target_type j_target_type,target.create_time j_create_time
+    </sql>
+    <resultMap id="target2po" type="com.chaos.po.AlarmTarget">
+        <id property="id" column="j_id"></id>
+        <result property="target" column="j_target"></result>
+        <result property="type" column="j_target_type"></result>
+        <result property="createTime" column="j_create_time"></result>
+    </resultMap>
+
+    <select id="listAll" resultMap="target2po">
+        select <include refid="column" />
+        from t_alarm_target target
+    </select>
+
+
+
+</mapper>

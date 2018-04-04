@@ -1,0 +1,45 @@
+server:
+  port: 5668
+  tomcat:
+    uri-encoding: utf-8
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 1
+      initial-size: 1
+      max-total: 10
+  freemarker:
+    template-loader-path: classpath:/templates
+  mvc:
+    static-path-pattern: /static/**
+
+
+mybatis:
+  config-location: classpath:mybatis.xml
+  mapper-locations: classpath:com/chaos/mapper/*.xml
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://192.168.3.200:3306/mybatis?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123
+
+---
+spring:
+  profiles: product
+  datasource:
+    url: jdbc:mysql://127.0.0.1:5667/alarm_system?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 1234566@hxq
+
+
+
+
+
