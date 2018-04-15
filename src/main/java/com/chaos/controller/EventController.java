@@ -43,17 +43,17 @@ public class EventController {
     public ResultVo saveMextBigAunt(Date come,Date go){
         Event baCome=new Event();
         baCome.setEventTime(come);
-        baCome.setCorrectScale(1F);
+        baCome.setCorrectScale(0F);
         baCome.setEventType(1);
         baCome.setPredictType(1);
         baCome.setEventDesc("预测");
 
         Event baGo=new Event();
         baGo.setEventTime(go);
-        baGo.setCorrectScale(1F);
+        baGo.setCorrectScale(0F);
         baGo.setEventType(2);
         baGo.setPredictType(1);
-        baCome.setEventDesc("预测");
+        baGo.setEventDesc("预测");
 
         BigAuntParis nextBigAuntParis=new BigAuntParis(baCome,baGo);
 
