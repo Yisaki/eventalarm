@@ -9,6 +9,8 @@ import java.util.List;
 public interface IEventService {
     List<Event> listAll();
 
+    List<Event> listAllReal();
+
     /**
      * 预测下次大姨妈开始与结束日期
      * @return

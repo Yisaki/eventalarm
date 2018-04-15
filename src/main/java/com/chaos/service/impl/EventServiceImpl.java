@@ -142,4 +142,9 @@ public class EventServiceImpl implements IEventService {
 
         return 0;
     }
+
+    @Override
+    public List<Event> listAllReal() {
+        return eventMapper.listAllReal();
+    }
 }

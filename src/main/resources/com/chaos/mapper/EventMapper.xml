@@ -15,6 +15,10 @@
         select * from t_event ORDER  by event_time ASC
     </select>
 
+    <select id="listAllReal" resultMap="table2Po">
+        select * from t_event where predict_type=0 and event_type in(1,2) ORDER  by event_time ASC
+    </select>
+
     <insert id="save" parameterType="com.chaos.po.Event">
         INSERT  INTO t_event(event_time,event_type,event_desc,correct_scale,predict_type) VALUES (#{eventTime},#{eventType},#{eventDesc},#{correctScale},#{predictType})
     </insert>

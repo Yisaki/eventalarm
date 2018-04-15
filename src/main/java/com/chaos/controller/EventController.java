@@ -33,7 +33,7 @@ public class EventController {
     @ResponseBody
     @RequestMapping(value="/analysis.do",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultVo analysisWithHis(){
-        List<Event> allEvent=eventService.listAll();
+        List<Event> allEvent=eventService.listAllReal();
         AnalysisInfo result=eventService.analysis(allEvent);
         return new ResultVo(result);
     }
