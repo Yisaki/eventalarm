@@ -12,6 +12,10 @@
         <result property="createTime" column="create_time"></result>
     </resultMap>
     <select id="listAll" resultMap="table2Po">
-        select * from t_event
+        select * from t_event ORDER  by event_time ASC
     </select>
+
+    <insert id="save" parameterType="com.chaos.po.Event">
+        INSERT  INTO t_event(event_time,event_type,event_desc,correct_scale,predict_type) VALUES (#{eventTime},#{eventType},#{eventDesc},#{correctScale},#{predictType})
+    </insert>
 </mapper>

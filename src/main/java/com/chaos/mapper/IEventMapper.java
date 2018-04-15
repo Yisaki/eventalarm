@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IEventMapper {
     List<Event> listAll();
+
+    int save(Event event);
 }

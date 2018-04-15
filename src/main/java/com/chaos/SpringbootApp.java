@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication
 public class SpringbootApp {
     public static void main(String args[]){
-        //args=new String[]{"--spring.profiles.active=dev"};
+        args=new String[]{"--spring.profiles.active=dev"};
         SpringApplication.run(SpringbootApp.class,args);
     }
 }

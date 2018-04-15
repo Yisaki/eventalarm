@@ -20,6 +20,7 @@ public class Math {
         return result;
     }
 
+
     public static void main(String[] args){
         float result=weightedMean(new int[]{1,1,1},new float[]{0.1F,0.2F,0.7F});
         System.out.println(result);

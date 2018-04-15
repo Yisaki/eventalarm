@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-
+    <#include "../base/nav.ftl">
 
     <form method="post" action="${basePath}/alarmTask/add.htm">
         <div class="form-group">

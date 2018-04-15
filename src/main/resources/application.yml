@@ -25,7 +25,7 @@ mybatis:
 
 ---
 spring:
-  profiles: dev
+  profiles: local
   datasource:
     url: jdbc:mysql://192.168.3.200:3306/mybatis?useUnicode=true&characterEncoding=utf8
     username: root
@@ -36,6 +36,14 @@ spring:
   profiles: product
   datasource:
     url: jdbc:mysql://127.0.0.1:5667/alarm_system?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 1234566@hxq
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://139.199.85.171:5667/alarm_system?useUnicode=true&characterEncoding=utf8
     username: root
     password: 1234566@hxq
 

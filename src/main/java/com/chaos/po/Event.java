@@ -9,6 +9,15 @@ public class Event{
     private Float correctScale;
     private Integer predictType;
     private Date createTime;
+    private String eventDesc;
+
+    public String getEventDesc() {
+        return eventDesc;
+    }
+
+    public void setEventDesc(String eventDesc) {
+        this.eventDesc = eventDesc;
+    }
 
     public Long getId() {
         return id;
