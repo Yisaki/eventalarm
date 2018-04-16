@@ -90,45 +90,30 @@
 <script type="text/javascript">
 
     jQuery(function(){
-        jQuery("#analysisButton").click(function(){
-            jQuery.ajax({
-                url:"${basePath}/event/analysis.do",
-                method:"GET",
-                success:function (resp) {
-                    if(resp.code!=1){
-                        alert(resp.desc);
-                        return;
-                    }
 
-                    var Jresult=jQuery("#analysisResult li");
-                    Jresult.eq(0).children("span").html(resp.data.avgLastDay);
-                    Jresult.eq(1).children("span").html(resp.data.avgGapDay);
-                    Jresult.eq(2).children("span").html(resp.data.nextCome);
-                    Jresult.eq(3).children("span").html(resp.data.nextGo);
-                }
+        //分析结果弹出框
+        jQuery("#analysisButton").click(function(){
+
+            ajax("${basePath}/event/analysis.do",0,null,function(resp){
+                var Jresult=jQuery("#analysisResult li");
+                Jresult.eq(0).children("span").html(resp.data.avgLastDay);
+                Jresult.eq(1).children("span").html(resp.data.avgGapDay);
+                Jresult.eq(2).children("span").html(resp.data.nextCome);
+                Jresult.eq(3).children("span").html(resp.data.nextGo);
             })
+
         })
-        
+
+        //保存结果
         jQuery("#saveEvent").click(function () {
             var Jresult=jQuery("#analysisResult li");
-            //Jresult.eq(0).children("span").html();
-            //Jresult.eq(1).children("span").html();
             var nextCome=Jresult.eq(2).children("span").html();
             var nextGo=Jresult.eq(3).children("span").html();
 
-            jQuery.ajax({
-                url:"${basePath}/event/saveMextBigAunt.do",
-                method:"POST",
-                data:{'come':nextCome,'go':nextGo},
-                success:function (resp) {
-                    if(resp.code!=1){
-                        alert(resp.desc);
-                        return;
-                    }
-
-                    location.reload(true);
-                }
+            ajax("${basePath}/event/saveMextBigAunt.do",1,{'come':nextCome,'go':nextGo},function(resp){
+                location.reload(true);
             })
+
         })
     })
 
